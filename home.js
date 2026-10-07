@@ -546,8 +546,8 @@
     "#duna-home .dh-cta-row{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}",
 
     /* cinta de arriba */
-    ".dh-cinta{background:#2E3529;color:#F4F0E8;overflow:hidden;font-family:'Nunito Sans',-apple-system,'Segoe UI',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;position:relative;z-index:5}",
-    ".dh-cinta-t{display:flex;width:max-content;animation:dh-cinta 38s linear infinite}",
+    ".dh-cinta{background:#2E3529;color:#F4F0E8;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;font-family:'Nunito Sans',-apple-system,'Segoe UI',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;position:relative;z-index:5}",
+    ".dh-cinta-t{display:flex;width:max-content;will-change:transform}",
     ".dh-cinta span{display:inline-flex;align-items:center;gap:14px;padding:10px 0 10px 22px;white-space:nowrap}",
     ".dh-cinta span:after{content:'';width:5px;height:5px;border-radius:50%;background:#C9965F}",
     "@keyframes dh-cinta{to{transform:translateX(-50%)}}",
@@ -586,15 +586,13 @@
     /* 02 reseñas: dos cintas infinitas */
     "#duna-home .dh-rev{padding-block:46px 50px;background:var(--b)}",
     "#duna-home .dh-rev-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-size:14.5px;font-weight:700;color:var(--t);margin:0 0 20px;padding-inline:18px;text-align:center}",
-    "#duna-home .dh-rev-v{overflow:hidden;padding-block:6px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}",
+    "#duna-home .dh-rev-v{overflow:hidden;padding-block:6px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}",
     "#duna-home .dh-rev-v+.dh-rev-v{margin-top:14px}",
-    "#duna-home .dh-rev-t{display:flex;align-items:flex-start;gap:14px;width:max-content;animation:dh-cinta 90s linear infinite}",
-    "#duna-home .dh-rev-v.inv .dh-rev-t{animation-direction:reverse;animation-duration:120s}",
-    "#duna-home .dh-rev-v.lenta .dh-rev-t{animation-duration:140s}",
-    "#duna-home .dh-rev-v:hover .dh-rev-t,#duna-home .dh-rev-v:focus-within .dh-rev-t,#duna-home .dh-rev-v.quieta .dh-rev-t{animation-play-state:paused}",
+    "#duna-home .dh-rev-t{display:flex;align-items:flex-start;gap:14px;width:max-content;will-change:transform}",
+    /* las cintas las mueve cintaInfinita() (JS): ver la nota en la SECCIÓN 02 */
     "#duna-home .dh-rf{width:250px;flex:0 0 auto;background:var(--b);border:1px solid rgba(63,74,60,.12);border-radius:20px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(46,53,41,.7)}",
     "#duna-home .dh-rf-f{position:relative;aspect-ratio:4/5;background:#ECEFE6}",
-    "#duna-home .dh-rf-f img{width:100%;height:100%;object-fit:cover;display:block}",
+    "#duna-home .dh-rf-f img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}",
     "#duna-home .dh-rf-f .dh-ph{position:absolute;inset:0}",
     "#duna-home .dh-rf-f .tag{position:absolute;left:10px;bottom:10px;background:rgba(46,53,41,.82);color:var(--l);font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:5px 10px;border-radius:99px}",
     "#duna-home .dh-rf-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}",
@@ -699,7 +697,10 @@
     "#duna-home .dh-rut-c{background:var(--b);border-radius:24px;overflow:hidden;border:1px solid rgba(63,74,60,.1);display:grid;grid-template-columns:minmax(0,1fr)}",
     "@media(min-width:600px){#duna-home .dh-rut-c{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}",
     "#duna-home .dh-rut-f{position:relative;aspect-ratio:1/1;max-width:100%;background:radial-gradient(circle at 50% 42%,#F7F2E8,#EAE3D5);display:flex;align-items:center;justify-content:center;padding:9%}",
-    "#duna-home .dh-rut-f img{max-width:100%;max-height:100%;width:auto;height:auto;display:block;filter:drop-shadow(0 16px 18px rgba(46,53,41,.25))}",
+    "#duna-home .dh-rut-f img{position:absolute;top:9%;left:9%;width:82%;height:82%;max-width:none;max-height:none;object-fit:contain;display:block;filter:drop-shadow(0 16px 18px rgba(46,53,41,.25))}",
+    "#duna-home .dh-rut-f .dh-ph{position:absolute;top:0;right:0;bottom:0;left:0}",
+    /* iPhone viejo sin aspect-ratio: el recuadro cuadrado se arma con padding */
+    "@supports not (aspect-ratio:1/1){#duna-home .dh-rut-f{height:0;padding:0 0 100%}#duna-home .dh-rf-f{height:0;padding:0 0 125%}}",
     "#duna-home .dh-rut-f .tag{position:absolute;left:12px;top:12px;background:var(--m);color:var(--s2);font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:99px}",
     "#duna-home .dh-rut-b{padding:22px 20px;display:flex;flex-direction:column;gap:8px;justify-content:center}",
     "#duna-home .dh-rut-b .n{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--mo)}",
@@ -799,7 +800,7 @@
     "#dh-sticky .t span{font-size:12.5px;font-weight:700;color:#8E6232}",
     "#dh-sticky a{flex:0 0 auto;display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;border-radius:12px;background:#3F4A3C;color:#F4F0E8!important;font-weight:800;font-size:15px;text-decoration:none!important}",
     "@media(min-width:900px){#dh-sticky{display:none}}",
-    "@media(prefers-reduced-motion:reduce){#duna-home *,.dh-cinta-t{animation:none!important;transition:none!important}#duna-home .dh-rev-v{overflow-x:auto}.dh-cinta{overflow-x:auto}}"
+    "@media(prefers-reduced-motion:reduce){#duna-home *{animation:none!important;transition:none!important}}"
   ].join("");
 
   /* ---------- íconos de línea ---------- */
@@ -887,17 +888,90 @@
     var t1 = texto.filter(function (r, i) { return i % 2 === 0; }), t2 = texto.filter(function (r, i) { return i % 2 === 1; });
     if (!t2.length) t2 = t1;
     var A = conFoto.map(cf).join(""), B = t1.map(ct).join(""), C = t2.map(ct).join("");
-    function cinta(html, cls, label) { return html ? '<div class="dh-rev-v ' + cls + '" tabindex="0" aria-label="' + label + '"><div class="dh-rev-t">' + html + html + "</div></div>" : ""; }
+    /* dir: 1 = hacia la derecha · -1 = hacia la izquierda · vel: px por segundo */
+    function cinta(html, cls, label, dir, vel) { return html ? '<div class="dh-rev-v ' + cls + '" data-dir="' + dir + '" data-vel="' + vel + '" aria-label="' + label + '"><div class="dh-rev-t">' + html + "</div></div>" : ""; }
     return sec("dh-resenas", "dh-rev",
       '<p class="dh-rev-h">' + stars(5) + " " + (PUNT ? PUNT + " de 5 · " : "") + (NOPS ? NOPS + " opiniones de clientas" : "Lo que dicen ellas") + "</p>" +
-      cinta(A, "lenta", "Reseñas con foto de clientas") + cinta(B, "inv", "Reseñas de clientas") + cinta(C, "", "Más reseñas de clientas") +
+      cinta(A, "lenta", "Reseñas con foto de clientas", 1, 26) + cinta(B, "inv", "Reseñas de clientas", -1, 32) + cinta(C, "", "Más reseñas de clientas", 1, 30) +
       '<p class="dh-legal" style="text-align:center;font-size:12.5px;color:#6E7368;margin:18px 18px 0">Resultados individuales: pueden variar según cada piel y la constancia de uso.</p>');
   }
   function resenasBind(el) {
-    /* en el celular, tocar la cinta la frena; tocar de nuevo la suelta */
+    /* 1ª cinta (fotos) a la derecha · 2ª a la izquierda · 3ª a la derecha */
     el.querySelectorAll(".dh-rev-v").forEach(function (v) {
-      v.addEventListener("click", function () { v.classList.toggle("quieta"); });
+      cintaInfinita(v, +v.getAttribute("data-dir") || -1, +v.getAttribute("data-vel") || 30);
     });
+  }
+
+  /* ---------- CINTAS INFINITAS (la de arriba y las tres de reseñas) ----------
+     Las mueve JS, no una animación CSS, por tres motivos:
+     · En el iPhone, después de tocar o deslizar, el :hover y el foco quedan
+       "pegados", y la cinta con animación CSS se quedaba frenada.
+     · Con "Reducir movimiento" activado en el teléfono, la regla de
+       accesibilidad apagaba la animación y la cinta quedaba quieta.
+     · Así se puede arrastrar con el dedo: si el dedo va de costado mueve la
+       cinta, si va para abajo scrollea la página. Al soltar, sigue sola a
+       los 2,5 segundos.
+     El contenido se repite solo hasta cubrir el ancho de la pantalla dos
+     veces, así nunca aparece un hueco, ni en pantallas anchas.
+     dir: 1 = hacia la derecha · -1 = hacia la izquierda · vel: px por segundo.
+     sinPausa: true = no se frena nunca (la cinta de arriba). Las reseñas, en
+     compu, se frenan con el mouse encima para poder leerlas; en el celular no. */
+  function cintaInfinita(vp, dir, vel, sinPausa) {
+    var t = vp && vp.firstElementChild;
+    if (!t || t.__ci) return; t.__ci = true;
+    var unidad = t.innerHTML, mitad = 0, x = null, visible = true, arrastre = false, pausa = 0, ultimo = 0, encima = false;
+    t.style.animation = "none";
+    function acomodar() {
+      if (mitad > 0) { while (x <= -mitad) x += mitad; while (x > 0) x -= mitad; }
+      t.style.transform = "translate3d(" + x + "px,0,0)";
+    }
+    function llenar() {
+      var ancho = vp.clientWidth || window.innerWidth || 400, prop = (x !== null && mitad) ? x / mitad : null;
+      t.innerHTML = unidad;
+      var u = t.scrollWidth || 1, k = Math.max(1, Math.ceil((ancho + 40) / u)), media = "";
+      for (var i = 0; i < k; i++) media += unidad;
+      t.innerHTML = media + media;
+      /* las fotos de las copias se cargan ya: si no, aparecían en blanco al pasar */
+      t.querySelectorAll("img[loading='lazy']").forEach(function (im) { im.loading = "eager"; });
+      try { planB(vp); } catch (e) {}
+      mitad = t.scrollWidth / 2;
+      x = prop !== null ? prop * mitad : (dir > 0 ? -mitad / 2 : 0);
+      acomodar();
+    }
+    function cuadro(ts) {
+      var dt = ultimo ? Math.min(64, ts - ultimo) : 16; ultimo = ts;
+      if (visible && !arrastre && !encima && !document.hidden && Date.now() > pausa) { x += dir * vel * dt / 1000; acomodar(); }
+      requestAnimationFrame(cuadro);
+    }
+    var x0 = 0, y0 = 0, xi = 0, eje = null;
+    function abajo(px, py) { arrastre = true; eje = null; x0 = px; y0 = py; xi = x; }
+    function mueve(px, py, ev) {
+      if (!arrastre) return;
+      var dx = px - x0, dy = py - y0;
+      if (eje === null) { if (Math.abs(dx) < 5 && Math.abs(dy) < 5) return; eje = Math.abs(dx) > Math.abs(dy) ? "x" : "y"; }
+      if (eje === "y") { arrastre = false; pausa = Date.now() + 1200; return; }
+      if (ev && ev.cancelable) ev.preventDefault();
+      x = xi + dx; acomodar();
+    }
+    function arriba() { if (!arrastre) return; arrastre = false; pausa = Date.now() + 2500; }
+    vp.addEventListener("touchstart", function (e) { var p = e.touches[0]; abajo(p.clientX, p.clientY); }, { passive: true });
+    vp.addEventListener("touchmove", function (e) { var p = e.touches[0]; mueve(p.clientX, p.clientY, e); }, { passive: false });
+    vp.addEventListener("touchend", arriba, { passive: true });
+    vp.addEventListener("touchcancel", arriba, { passive: true });
+    vp.addEventListener("mousedown", function (e) { if (e.button) return; e.preventDefault(); abajo(e.clientX, e.clientY); });
+    window.addEventListener("mousemove", function (e) { mueve(e.clientX, e.clientY, null); });
+    window.addEventListener("mouseup", arriba);
+    var mq = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!sinPausa && mq && mq.matches) {
+      vp.addEventListener("mouseenter", function () { encima = true; });
+      vp.addEventListener("mouseleave", function () { encima = false; });
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { rootMargin: "120px 0px" }).observe(vp);
+    llenar();
+    setTimeout(llenar, 1200);   /* por si las fuentes tardan y cambia el ancho */
+    var rt = null;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(llenar, 200); });
+    requestAnimationFrame(cuadro);
   }
 
   /* ---------- 03 · DE DÓNDE SALEN LOS GRANITOS (5 pasos, el último es el jabón) ---------- */
@@ -1280,8 +1354,9 @@
     var msgs = (HC.cinta || []).map(function (m) { return "<span>" + esc(m) + "</span>"; }).join("");
     if (msgs) {
       var c = document.createElement("div"); c.className = "dh-cinta"; c.setAttribute("aria-label", (HC.cinta || []).join(" · "));
-      c.innerHTML = '<div class="dh-cinta-t" aria-hidden="true">' + msgs + msgs + msgs + msgs + "</div>";
+      c.innerHTML = '<div class="dh-cinta-t" aria-hidden="true">' + msgs + "</div>";
       if (head && head.parentNode && head.parentNode !== document.documentElement) head.parentNode.insertBefore(c, head); else document.body.insertBefore(c, document.body.firstChild);
+      cintaInfinita(c, -1, 40, true);   /* la cinta de arriba corre hacia la izquierda, sin pausa */
     }
 
     var partes = [hero(), resenas(), roce(), mapa(), mitos(), sinAgresion(), ingredientes(), rutina(), guia(), oferta(), garantia(), cierre()].filter(Boolean);
