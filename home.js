@@ -28,7 +28,10 @@ var H = {
   producto: "/productos/diabecan-capsulas-para-una-glucosa-estable-y-mas-energia-6n670/",
   whatsapp: "543385685271",
   email: "",                         /* ej.: "hola@dunasolutions.com.ar" · vacío = no se muestra */
-  ocultarPieTema: !0,                /* !0 = usa el pie de DiabeCan en lugar del de la plantilla */
+  ocultarPieTema: !0,
+  headerEnTodaLaTienda: !0,         /* !0 = el encabezado estilo Metabolae se aplica en todas las páginas */
+  ocultarCookies: !0,                /* oculta el aviso de cookies de la plantilla */
+  cuit: "20454821115",                /* !0 = usa el pie de DiabeCan en lugar del de la plantilla */
   optimizarImagenes: !0,
 
   anuncios: ["Llevá 2, pagá 1","Envío gratis desde 3 frascos","3 cuotas sin interés","Garantía de 90 días"],
@@ -80,6 +83,33 @@ var H = {
    NO TOCAR DE ACÁ PARA ABAJO
    ═══════════════════════════════════════════════════════════════════ */
 if(!H.activo) return;
+/* ── ENCABEZADO estilo Metabolae (sobre el header real de Tiendanube) ── */
+(function(){
+  var path0=location.pathname.replace(/\/+$/,""), esHome=path0===""||/^\/(es|pt|en)$/.test(path0);
+  if(!esHome&&!H.headerEnTodaLaTienda) return;
+  if(document.getElementById("dh-head")) return;
+  var t=""
+  +".js-head-main.head-main{background:#fff!important;border-bottom:1px solid #eee5df!important;box-shadow:none!important}"
+  +".js-head-main>.container-fluid{max-width:1280px;margin:0 auto}"
+  +".js-head-main>.container-fluid>.row:first-child{position:relative;min-height:64px;flex-wrap:nowrap}"
+  +".js-head-main .logo-img-container{text-align:center!important}.js-head-main .logo-img{max-height:38px!important;width:auto!important;margin:0 auto}"
+  +".js-head-main .utilities-icon{width:22px!important;height:22px!important;fill:#2b1d17!important}"
+  +".js-head-main .cart-widget-total,.js-head-main .js-cart-widget-amount.badge{font-family:Poppins,sans-serif}"
+  +".js-head-main .js-cart-widget-amount.badge{background:#c47245!important;color:#fff!important;border-radius:50%;min-width:18px;height:18px;line-height:18px;padding:0 4px;font-size:11px}"
+  +".js-head-main .nav-desktop-list{display:flex;justify-content:center;gap:34px}.js-head-main .nav-list-link{font-family:Poppins,sans-serif!important;font-size:14.5px!important;font-weight:500!important;color:#2b1d17!important;letter-spacing:.3px;text-transform:none!important}"
+  +".js-head-main .nav-list-link:hover,.js-head-main .nav-list-link.selected{color:#c47245!important}"
+  +".js-head-main .menu-and-banners-row{border-top:1px solid #f1e9e3;padding:4px 0}"
+  +".js-head-main .search-input{border-radius:30px!important;border-color:#e6dcd5!important;font-family:Poppins,sans-serif}"
+  /* celular: menú a la izquierda · logo al centro · buscar y carrito a la derecha */
+  +"@media(max-width:767px){.js-head-main>.container-fluid>.row:first-child{justify-content:space-between}"
+  +".js-head-main .col-utility.order-last{order:-2!important;padding-left:6px!important;padding-right:0!important}"
+  +".js-head-main .col.order-first{order:-1!important;position:absolute;left:50%;transform:translateX(-50%);width:auto;flex:none;pointer-events:auto}"
+  +".js-head-main .logo-img{max-height:30px!important}"
+  +".js-head-main .col-utility.order-1{order:1!important;margin-left:auto}.js-head-main .col-utility.order-2{order:2!important;padding-right:10px!important}}"
+  +(H.ocultarCookies?".js-notification-cookie-banner{display:none!important}":"");
+  var s=document.createElement("style"); s.id="dh-head"; s.textContent=t; document.head.appendChild(s);
+})();
+
 var path=location.pathname.replace(/\/+$/,"");
 if(path!==""&&!/^\/(es|pt|en)$/.test(path)) return;
 if(window.__dzHome) return; window.__dzHome=1;
@@ -253,10 +283,10 @@ var faq='<section class="sec fq"><div class="w"><h2 class="ttl">Preguntas frecue
 var wa="https://wa.me/"+H.whatsapp;
 var pie='<footer class="ftr"><div class="w"><div class="gd"><div><div class="lg"><img src="'+H.logoBlanco+'" alt="'+esc(H.empresa)+'" style="width:190px;height:auto"></div><p class="tg">Creadores de DiabeCan. Una cápsula por día. Canela de Ceilán real. Energía más pareja, sin rellenos.</p><div class="ct">'
  +(H.email?"<span>"+esc(H.email)+"</span>":"")+'<a href="'+wa+'" target="_blank" rel="noopener">WhatsApp: +'+esc(H.whatsapp)+'</a><span>Atención de lunes a sábado.</span></div></div>'
- +'<div><h4>Accesos rápidos</h4><ul><li><a href="/">Inicio</a></li><li><a href="'+URL_P+'">Comprar DiabeCan</a></li><li><a href="/contacto/">Contacto</a></li><li><a href="/account/">Mi cuenta</a></li></ul></div>'
- +'<div><h4>Políticas</h4><ul><li><a href="/politicas-de-privacidad/">Privacidad</a></li><li><a href="/terminos-y-condiciones/">Términos y condiciones</a></li><li><a href="/politicas-de-devolucion/">Devoluciones</a></li><li><a href="/envios/">Envíos</a></li></ul></div>'
+ +'<div><h4>Accesos rápidos</h4><ul><li><a href="/">Inicio</a></li><li><a href="/productos/">Productos</a></li><li><a href="'+URL_P+'">Comprar DiabeCan</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>'
+ +'<div><h4>Ayuda</h4><ul><li><a href="/faqs/">Preguntas frecuentes</a></li><li><a href="'+wa+'" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="/contacto/?order_cancellation_without_id=true">Botón de arrepentimiento</a></li><li><a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa del consumidor</a></li></ul></div>'
  +'<div><h4>Sumate a nuestra lista</h4><p class="sm" style="font-size:14px;color:#cdbdb2;margin:0">Ofertas, promociones y consejos simples para una energía más pareja. Nada más.</p><form id="dh-nl" novalidate><input id="dh-nl-email" type="email" placeholder="Tu email" aria-label="Tu email" required><button class="btn pill" type="submit" style="max-width:none">Suscribirme</button><span class="sm">Te das de baja cuando quieras.</span></form></div></div>'
- +'<div class="lgl"><b>Aclaración:</b> <i>DiabeCan es un suplemento dietario. No es un medicamento ni reemplaza una alimentación variada y equilibrada ni el tratamiento indicado por tu médico. Consultá a tu médico antes de consumirlo, sobre todo si tomás medicación.</i><div class="py"><span>Mercado Pago</span><span>Visa</span><span>Mastercard</span><span>American Express</span><span>Naranja</span><span>Cabal</span></div><div style="margin-top:14px">© '+new Date().getFullYear()+" "+esc(H.empresa)+"</div></div></div></footer>";
+ +'<div class="lgl"><b>Aclaración:</b> <i>DiabeCan es un suplemento dietario. No es un medicamento ni reemplaza una alimentación variada y equilibrada ni el tratamiento indicado por tu médico. Consultá a tu médico antes de consumirlo, sobre todo si tomás medicación.</i><div class="py"><span>Mercado Pago</span><span>Visa</span><span>Mastercard</span><span>American Express</span><span>Naranja</span><span>Cabal</span></div><div style="margin-top:14px">Copyright '+esc(H.empresa)+(H.cuit?" - "+esc(H.cuit):"")+" - "+new Date().getFullYear()+'. Todos los derechos reservados.<br>Defensa de las y los consumidores. Para reclamos <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener" style="color:#e9ddd5;text-decoration:underline">ingresá acá</a> / <a href="/contacto/?order_cancellation_without_id=true" style="color:#e9ddd5;text-decoration:underline">Botón de arrepentimiento</a></div></div></div></footer>';
 
 /* ── montaje ── */
 function montar(){
@@ -301,8 +331,8 @@ function activar(root){
   /* newsletter: usa el formulario de la plantilla si existe */
   var nf=$("#dh-nl",root); if(nf) nf.addEventListener("submit",function(e){
     e.preventDefault(); var em=$("#dh-nl-email",root).value.trim(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ $("#dh-nl-email",root).focus(); return; }
-    var tf=$$("form").filter(function(f){ return !root.contains(f)&&f.querySelector("input[type=email],input[name=email]"); })[0];
-    if(tf){ var inp=tf.querySelector("input[type=email],input[name=email]"); inp.value=em; try{ tf.requestSubmit?tf.requestSubmit():tf.submit(); }catch(x){} }
+    var tf=$("form[data-store='newsletter-form']")||$$("form").filter(function(f){ return !root.contains(f)&&f.querySelector("input[type=email],input[name=email]"); })[0];
+    if(tf){ var inp=tf.querySelector("input[type=email],input[name=email]"); inp.value=em; tf.setAttribute("action",""); var sb=tf.querySelector("[type=submit]"); try{ sb?sb.click():tf.submit(); }catch(x){} }
     nf.innerHTML='<span class="ok">¡Listo! Ya estás en la lista.</span>';
   });
 }
