@@ -227,6 +227,7 @@ var CSS=""
 +"#dh .tb .c{font-size:13.5px;padding:15px 8px}#dh .tb .hc img{height:70px}#dh .tb .ot{width:54px;height:54px;font-size:24px}#dh .gr .seal{width:170px;height:170px}"
 +"#dh .ftr .gd{grid-template-columns:1fr;gap:34px}#dh .fi button{font-size:15px}}"
 +"@media(prefers-reduced-motion:reduce){#dh .an .tr,#dh .ug .tr{animation:none}}";
+if(H.ocultarPieTema) CSS+="footer.js-footer,footer[data-store='footer'],.js-footer-legal{display:none!important}";
 var st=document.createElement("style"); st.id="dh-css"; st.textContent=CSS; document.head.appendChild(st);
 
 /* ── secciones ── */
