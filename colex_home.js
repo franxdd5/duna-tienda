@@ -93,7 +93,7 @@ function cta(t){ return '<a href="#cxh-buy" class="cxh-btn" data-go>'+esc(t||"Pr
 var css=
  "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');"
 +"#cxh,#cxh *{box-sizing:border-box}#cxh{font-family:'Inter',sans-serif;color:#111;background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}"
-+"#cxh img{max-width:100%;display:block}#cxh a{text-decoration:none}"
++"#cxh img,#cxh video{max-width:100%;display:block}#cxh{width:100%;max-width:100vw}#cxh .w{width:100%}#cxh .thumbs{max-width:100%}#cxh .pk,#cxh .add,#cxh .gua,#cxh .ben{max-width:100%}#cxh .pk .nm small{display:block}#cxh .pay span{white-space:nowrap}#cxh a{text-decoration:none}"
 +"#cxh .w{max-width:1080px;margin:0 auto;padding:0 20px}"
 +"#cxh h1,#cxh h2,#cxh h3{font-family:'Inter',sans-serif;letter-spacing:-.045em;margin:0;color:#050505;font-weight:900;line-height:1.04}"
 +"#cxh .g{color:"+G+"}"
@@ -127,14 +127,14 @@ var css=
 +"#cxh .how{padding:56px 0;background:#fff}"
 +"#cxh .how .im{position:relative;border-radius:22px;overflow:hidden;max-width:620px;margin:0 auto;aspect-ratio:1/1;background:#c98f8f}"
 +"#cxh .how .im img,#cxh .how .im video{width:100%;height:100%;object-fit:cover;display:block}"
-+"#cxh .badge{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:12px 16px;font-size:13px;font-weight:800;line-height:1.2;box-shadow:0 10px 24px rgba(0,0,0,.18)}#cxh .badge svg{width:26px;height:26px}"
++"#cxh .cxh-dbl{position:absolute;right:14px;bottom:14px;top:auto;left:auto;width:auto;height:auto;max-width:70%;margin:0;border:0;text-transform:none;letter-spacing:0;text-align:left;white-space:normal;display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:12px 16px;font-size:13px;font-weight:800;line-height:1.2;box-shadow:0 10px 24px rgba(0,0,0,.18)}#cxh .cxh-dbl svg{width:26px;height:26px}"
 +"#cxh .how .tx{max-width:620px;margin:30px auto 0}"
 +"#cxh .how h2{font-size:clamp(32px,7vw,48px)}"
 +"#cxh .how p{font-size:16.5px;line-height:1.75;color:#3d4642;margin:18px 0 0}#cxh .how p b{color:#050505}"
 +"#cxh .box{margin:24px 0 0;border-left:4px solid "+G+";background:#f7fbf9;border-radius:0 14px 14px 0;padding:20px 22px;box-shadow:0 4px 14px rgba(0,0,0,.04)}"
 +"#cxh .box h4{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:16px;font-weight:800;color:"+DK+"}#cxh .box h4 svg{width:20px;height:20px}"
 +"#cxh .box p{margin:0;font-size:14.5px;line-height:1.65;color:#4a5550}"
-+"@media(min-width:900px){#cxh .how .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}#cxh .how .tx{margin:0}}"
++"@media(min-width:900px){#cxh .how .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}#cxh .how .tx{margin:0}}"
 /* ingredientes */
 +"#cxh .ing{background:"+LT+";padding:60px 0;text-align:center}"
 +"#cxh .ing h2{font-size:clamp(32px,7vw,50px)}"
@@ -151,8 +151,8 @@ var css=
 +"@media(min-width:760px){#cxh .ing .gr{grid-template-columns:1fr 1fr}}"
 /* compra */
 +"#cxh .buy{background:"+LT+";padding:56px 0}"
-+"#cxh .buy .grid{display:grid;grid-template-columns:1fr;gap:26px}"
-+"@media(min-width:900px){#cxh .buy .grid{grid-template-columns:1fr 1fr;gap:44px;align-items:start}#cxh .gal{position:sticky;top:80px}}"
++"#cxh .buy .grid{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}#cxh .grid>*{min-width:0;max-width:100%}"
++"@media(min-width:900px){#cxh .buy .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}#cxh .gal{position:sticky;top:80px}}"
 +"#cxh .gal .main{aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#fff 0,#e3f4ea 60%,#d3ecde 100%);display:flex;align-items:center;justify-content:center}"
 +"#cxh .gal .main img{width:100%;height:100%;object-fit:cover}#cxh .gal .main img.bt{width:auto;height:80%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(13,59,40,.25))}"
 +"#cxh .thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;scrollbar-width:none}#cxh .thumbs::-webkit-scrollbar{display:none}"
@@ -227,7 +227,7 @@ function build(){
     +'<div class="hero-img rv">'+heroImg+'</div>'+cta()+'</div></section>';
 
   /* CÓMO FUNCIONA */
-  h+='<section class="how" id="cxh-how"><div class="w grid"><div class="im rv">'+media(C.img.doble,"Animación de las arterias")+'<div class="badge">'+ICO.check+'<span>Fórmula de<br>doble acción</span></div></div>'
+  h+='<section class="how" id="cxh-how"><div class="w grid"><div class="im rv">'+media(C.img.doble,"Animación de las arterias")+'<div class="cxh-dbl">'+ICO.check+'<span>Fórmula de<br>doble acción</span></div></div>'
     +'<div class="tx"><span class="pill">Cómo funciona</span><h2>Dos caminos. <span class="g">Una fórmula completa.</span></h2>'
     +'<p>Mantener el colesterol en valores sanos necesita dos cosas: <b>equilibrar lo que tu cuerpo produce</b> y ayudar a tu hígado a <b>limpiar lo que ya está circulando</b> en la sangre.*</p>'
     +'<p>Los suplementos de un solo ingrediente suelen quedarse cortos porque atacan una sola parte. La bergamota sola o la levadura de arroz rojo sola: cada una es una pieza de un rompecabezas que necesita las dos. Y dentro de una cápsula, el ácido del estómago puede destruir gran parte de la dosis antes de que llegue a la sangre.*</p>'
