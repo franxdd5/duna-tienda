@@ -4,7 +4,7 @@ if (window.__NPADV__) return; window.__NPADV__ = true;
 
 /* ════════════════ CONFIG · editá solo este bloque ════════════════ */
 var CONFIG = {
-  urlLanding: "https://dunasolutions.mitiendanube.com/productos/neuropath-6-en-1-gomitas-para-hormigueo-ardor-y-adormecimiento-de-pies-y-manos-y8nwe/",   /* link de la ficha/landing de NeuroPath */
+  urlLanding: "https://dunasolutions.mitiendanube.com/productos/neuropath-6-en-1-capsulas-para-hormigueo-ardor-y-adormecimiento-de-pies-y-manos-y8nwe/",   /* link de la ficha/landing de NeuroPath */
   soloHome: true,                               /* true = se muestra solo en el home ("/") */
   medio: "Duna Solutions",
   autor: "Redacción Duna Solutions",
