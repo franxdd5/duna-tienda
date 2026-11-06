@@ -13,7 +13,7 @@ var CONFIG = {
   garantiaDias: 60,
   img: {
     hero: "https://i.ibb.co/27tkzhyX/Man-rubbing-sore-foot-715fe4e4-1.jpg",
-    nervio: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Guillain-barr%C3%A9_syndrome_-_Nerve_Damage.gif",
+    nervio: "https://cdn.jsdelivr.net/gh/franxdd5/duna-tienda@v16/nervio.gif",
     ciencia: "https://i.ibb.co/XZKtrC6Y/Scientists-working-in-laboratory-1c0ab4ab-1.jpg",
     capsula: "https://i.ibb.co/B5xTZfNK/Floating-capsule-product-shot-0db51492-removebg-preview.png",
     producto: "https://i.ibb.co/JWN2064L/Man-holding-supplement-bottle-in-1c8b8e6e-1.jpg",
@@ -53,6 +53,8 @@ var css = '' +
 '#npa{--t:#1b2433;--s:#405c80;--a:#134e7a;--b:#e3e8f0;--bg:#fff;max-width:720px;margin:0 auto;padding:18px 18px 40px;background:var(--bg);color:var(--t);font:18px/1.65 Georgia,"Times New Roman",serif;text-align:left}' +
 '#npa *{box-sizing:border-box}' +
 'html,body{background:#ffffff!important;background-color:#ffffff!important}' +
+'header.js-head-main,.head-main,[data-store="head"],footer.js-footer,[data-store="footer"],.js-footer-legal{display:none!important}' +
+'body{padding-top:0!important}' +
 '.npa-wrap{background:#ffffff!important;width:100vw;position:relative;left:50%;margin-left:-50vw;padding:0;overflow:hidden}' +
 '#npa,#npa .npa-tst,#npa .npa-box{background:#ffffff!important}' +
 '#npa .npa-top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #002655;padding-bottom:8px;margin-bottom:14px;font:700 13px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}' +
