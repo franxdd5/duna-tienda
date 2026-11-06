@@ -170,8 +170,12 @@ function mount() {
   var wrap = document.createElement("div"); wrap.className = "npa-wrap";
   var box = document.createElement("article"); box.id = "npa"; box.innerHTML = html; wrap.appendChild(box);
   var a = document.getElementById("np-adv-anchor");
-  var target = a || document.querySelector("main, .js-home-sections, #main-content, .container") || document.body;
-  if (a) a.parentNode.insertBefore(wrap, a.nextSibling); else target.insertBefore(wrap, target.firstChild);
+  var hdr = document.querySelector("header, .js-head-main, .head-main");
+  if (a) a.parentNode.insertBefore(wrap, a.nextSibling);
+  else if (hdr && hdr.parentNode === document.body) document.body.insertBefore(wrap, hdr.nextSibling);
+  else document.body.insertBefore(wrap, document.body.firstChild);
+  wrap.style.cssText += ";display:block!important;visibility:visible!important;opacity:1!important;position:relative;z-index:5";
+  try { console.log("[NeuroPath advertorial] cargado OK"); } catch (e) {}
   /* si una imagen no carga, muestra un recuadro con lo que va ahí */
   Array.prototype.forEach.call(box.querySelectorAll("img[data-npa-src]"), function (im) {
     function ph() { var d = document.createElement("div"); d.className = "npa-ph";
