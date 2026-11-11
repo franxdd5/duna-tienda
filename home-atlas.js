@@ -338,6 +338,8 @@ var CSS = [
 /* aparición */
 ".ha-up{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.ha-up.in{opacity:1;transform:none}",
 "#home-atlas li>svg{flex:0 0 auto}",
+"#home-atlas{overflow-x:clip}#home-atlas .g>*,#home-atlas .ha-wrap>*{min-width:0}.ha-gal,.ha-thw,.ha-thumbs{min-width:0;max-width:100%}.ha-buy h2{overflow-wrap:anywhere}",
+
 /* escritorio */
 "@media(min-width:750px){",
 " .ha-sec{padding:72px 0}",
